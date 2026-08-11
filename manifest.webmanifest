@@ -1,0 +1,25 @@
+{
+  "name": "Meander & Myrtle — Day Spa, Deloraine",
+  "short_name": "Meander & Myrtle",
+  "description": "One room. One therapist. Massage, facials, hands and feet, full spectrum infrared sauna and a 4D therapeutic massage chair in Deloraine, Tasmania.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0E120E",
+  "theme_color": "#0E120E",
+  "categories": ["health", "lifestyle", "wellness"],
+  "lang": "en-AU",
+  "dir": "ltr",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "shortcuts": [
+    { "name": "Treatment menu", "url": "./index.html#treatments" },
+    { "name": "Infrared sauna", "url": "./index.html#sauna" },
+    { "name": "Gift cards", "url": "./index.html#gift" }
+  ]
+}
