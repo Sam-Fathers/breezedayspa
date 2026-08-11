@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meander &amp; Myrtle — Day Spa, Deloraine Tasmania</title>
+<meta name="description" content="A single-room boutique day spa at the foot of the Great Western Tiers in Deloraine, Tasmania. Massage, facials, hands and feet, full spectrum infrared sauna and a 4D therapeutic massage chair.">
+<meta name="theme-color" content="#0E120E">
+<meta name="color-scheme" content="dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Meander &amp; Myrtle">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Meander &amp; Myrtle — Day Spa, Deloraine">
+<meta property="og:description" content="One room. One therapist. Your hour. Massage, facials, infrared sauna and 4D massage chair in Deloraine, Tasmania.">
+<meta property="og:locale" content="en_AU">
+
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Inter+Tight:wght@300..700&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<a class="skip" href="#treatments">Skip to treatments</a>
+
+<!-- ══════════════════════════════════════════ TOP BAR ═══════════════════ -->
+<header class="topbar" id="topbar">
+  <a class="topbar__brand" href="#home" aria-label="Meander and Myrtle, home">
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="#mark"></use></svg>
+    <span class="topbar__name" data-site="name"></span>
+  </a>
+  <a class="topbar__call" data-site="tel" href="#" aria-label="Call the spa">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"></use></svg>
+  </a>
+</header>
+
+<div class="offline-flag" id="offlineFlag" role="status" hidden>
+  You're offline. Everything here still works — booking needs signal.
+</div>
+
+<main id="main">
+
+<!-- ══════════════════════════════════════════ HERO ══════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero__sky" aria-hidden="true"></div>
+  <div class="hero__glow" aria-hidden="true"></div>
+
+  <svg class="ridge ridge--far" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 300V172l148-6 112-8 58-32 54-4 62 26 92-2 152-6 158 4 164 6 200 4v118Z"/>
+  </svg>
+  <svg class="ridge ridge--mid" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 300V212l182-6 118-6 122-6 100 14 118-8 142-6 140 6 138 10 140-6v96Z"/>
+  </svg>
+  <svg class="ridge ridge--near" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 300v-48l162-6 160 8 158-10 142 8 158-6 162 8 160-6 98 6v46Z"/>
+  </svg>
+
+  <div class="hero__inner">
+    <p class="eyebrow hero__place">Deloraine · Tasmania</p>
+    <h1 class="hero__title">
+      <span>One room.</span>
+      <span>One therapist.</span>
+      <span class="hero__title-em">Your hour.</span>
+    </h1>
+    <p class="hero__lede">
+      At the foot of the Great Western Tiers, a single treatment room where the
+      whole afternoon is built around one person. Today, that's you.
+    </p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="#treatments">See the menu</a>
+      <button class="btn btn--ghost" data-open-sheet="book">Book an hour</button>
+    </div>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span></span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ THE ROOM ══════════════════ -->
+<section class="room" id="room">
+  <div class="wrap">
+    <p class="eyebrow" data-room="eyebrow"></p>
+    <h2 class="h2" data-room="title"></h2>
+    <div class="room__body" data-room="paras"></div>
+
+    <div class="plate plate--room reveal" data-plate="room" aria-hidden="true">
+      <div class="plate__weave"></div>
+      <span class="plate__cap">The room, Emu Bay Road</span>
+    </div>
+
+    <figure class="therapist reveal">
+      <div class="therapist__portrait" data-plate="brea" aria-hidden="true">
+        <svg viewBox="0 0 120 120"><use href="#i-hands"></use></svg>
+      </div>
+      <figcaption>
+        <strong data-site="therapistName"></strong>
+        <span data-site="therapistRole"></span>
+        <span class="quals" data-site="therapistQuals"></span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ TREATMENTS ════════════════ -->
+<section class="treatments" id="treatments">
+  <div class="wrap treatments__head">
+    <p class="eyebrow">The menu</p>
+    <h2 class="h2">How long do you have?</h2>
+    <p class="lede">
+      Pick a length and the menu rearranges itself around it. Every price is
+      the full price — nothing is added at the counter.
+    </p>
+  </div>
+
+  <!-- Sticky control block -->
+  <div class="controls" id="controls">
+    <div class="controls__inner">
+      <div class="segs" role="tablist" aria-label="Treatment category" id="catSegs"></div>
+      <div class="dial" role="radiogroup" aria-label="Treatment length" id="durDial"></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <ul class="cards" id="cardList"></ul>
+    <p class="cards__empty" id="cardEmpty" hidden></p>
+    <p class="cards__note">
+      Health fund rebates available on remedial treatments, claimed on the spot.
+      Add an infrared sauna session to any treatment for $25.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ SAUNA ═════════════════════ -->
+<section class="sauna" id="sauna">
+  <div class="sauna__heat" aria-hidden="true"></div>
+
+  <div class="wrap sauna__head">
+    <p class="eyebrow" data-sauna="eyebrow"></p>
+    <h2 class="h2 h2--big" data-sauna="title"></h2>
+    <p class="lede" data-sauna="lede"></p>
+
+    <div class="gauge" aria-hidden="true">
+      <span class="gauge__num" id="gaugeNum">45</span><span class="gauge__deg">°C</span>
+      <span class="gauge__label">cabin temperature</span>
+      <div class="gauge__track"><div class="gauge__fill" id="gaugeFill"></div></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="plate plate--wide reveal" data-plate="sauna" aria-hidden="true">
+      <div class="plate__weave plate__weave--heat"></div>
+      <span class="plate__cap">The cabin</span>
+    </div>
+
+    <h3 class="h3">Why you can sit in it</h3>
+    <ul class="compare" id="saunaCompare"></ul>
+
+    <h3 class="h3">Three wavelengths, three depths</h3>
+    <ol class="spectrum" id="spectrum"></ol>
+
+    <h3 class="h3">What it's for</h3>
+    <ul class="bento bento--sauna" id="saunaBenefits"></ul>
+
+    <h3 class="h3">How a session runs</h3>
+    <ol class="protocol" id="saunaProtocol"></ol>
+
+    <h3 class="h3">Sessions</h3>
+    <ul class="pricelist" id="saunaSessions"></ul>
+
+    <h3 class="h3">Put it with something</h3>
+    <ul class="pairs" id="saunaPairs"></ul>
+
+    <h3 class="h3">Before you book</h3>
+    <div class="faqs" id="saunaFaqs"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ CHAIR ═════════════════════ -->
+<section class="chair" id="chair">
+  <div class="wrap chair__head">
+    <p class="eyebrow" data-chair="eyebrow"></p>
+    <h2 class="h2 h2--big" data-chair="title"></h2>
+    <p class="lede" data-chair="lede"></p>
+  </div>
+
+  <div class="wrap">
+    <figure class="chairfig" id="chairFig">
+      <svg viewBox="0 0 240 172" role="img" aria-label="Side view of the massage chair reclining">
+        <g class="cf-frame">
+          <rect x="98" y="142" width="98" height="12" rx="6" />
+          <path d="M112 142v-10M182 142v-10" />
+        </g>
+
+        <g class="cf-seat">
+          <rect x="104" y="106" width="66" height="26" rx="12" />
+          <path class="cf-post" d="M158 100v8" />
+          <rect class="cf-arm" x="116" y="84" width="56" height="16" rx="8" />
+          <circle class="cf-hot" data-part="hips" cx="128" cy="119" r="9" />
+          <circle class="cf-hot" data-part="arms" cx="150" cy="92" r="9" />
+        </g>
+
+        <g class="cf-back">
+          <rect x="96" y="34" width="30" height="78" rx="14" />
+          <path class="cf-rail" d="M111 46v56" />
+          <circle class="cf-hot" data-part="head" cx="111" cy="47" r="9" />
+          <circle class="cf-hot" data-part="shoulders" cx="111" cy="65" r="9" />
+          <circle class="cf-hot" data-part="spine" cx="111" cy="92" r="9" />
+        </g>
+
+        <g class="cf-legs">
+          <rect x="164" y="105" width="48" height="24" rx="11" />
+          <rect x="208" y="107" width="18" height="20" rx="8" />
+          <circle class="cf-hot" data-part="legs" cx="186" cy="117" r="9" />
+          <circle class="cf-hot" data-part="feet" cx="217" cy="117" r="9" />
+        </g>
+      </svg>
+      <figcaption>
+        <span class="chairfig__angle"><b id="cfAngle">104</b>°</span>
+        <span class="chairfig__cap" data-chair="caption"></span>
+      </figcaption>
+    </figure>
+
+    <ul class="bento bento--chair" id="chairFeatures"></ul>
+
+    <div class="plate plate--wide reveal" data-plate="chair" aria-hidden="true">
+      <div class="plate__weave plate__weave--timber"></div>
+      <span class="plate__cap">Remedial Deluxe+ in black</span>
+    </div>
+
+    <h3 class="h3">Take the chair when</h3>
+    <ul class="whenlist" id="chairWho"></ul>
+
+    <h3 class="h3">Sessions</h3>
+    <ul class="pricelist" id="chairSessions"></ul>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ GIFT ══════════════════════ -->
+<section class="gift" id="gift">
+  <div class="wrap">
+    <div class="giftcard reveal">
+      <div class="giftcard__grain" aria-hidden="true"></div>
+      <p class="eyebrow" data-gift="eyebrow"></p>
+      <h2 class="h2" data-gift="title"></h2>
+      <p class="lede" data-gift="lede"></p>
+
+      <div class="chips" id="giftAmounts" role="group" aria-label="Gift card amount"></div>
+
+      <ul class="ticks" id="giftPoints"></ul>
+
+      <a class="btn btn--primary btn--wide" id="giftBuy" href="#" target="_blank" rel="noopener">
+        Buy a gift card
+      </a>
+      <p class="fineprint">
+        Secure payment page. Prefer to arrange it in person or over the phone?
+        <a data-site="tel" href="#">Give us a ring</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ VISIT ═════════════════════ -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <p class="eyebrow">Find us</p>
+    <h2 class="h2">Come and see</h2>
+
+    <div class="visit__grid">
+      <a class="tile tile--action" data-site="tel" href="#">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"></use></svg>
+        <span class="tile__k">Call</span>
+        <span class="tile__v" data-site="phone"></span>
+      </a>
+      <a class="tile tile--action" data-site="mailto" href="#">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mail"></use></svg>
+        <span class="tile__k">Email</span>
+        <span class="tile__v" data-site="email"></span>
+      </a>
+      <a class="tile tile--action" data-site="map" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"></use></svg>
+        <span class="tile__k">Directions</span>
+        <span class="tile__v" data-site="address"></span>
+      </a>
+      <div class="tile tile--hours">
+        <span class="tile__k">Opening hours</span>
+        <dl id="hoursList"></dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <svg class="mark mark--lg" viewBox="0 0 32 32" aria-hidden="true"><use href="#mark"></use></svg>
+    <p class="foot__name" data-site="name"></p>
+    <p class="foot__tag" data-site="tagline"></p>
+    <p class="foot__small">
+      Nipaluna / lutruwita. We acknowledge the palawa people, the traditional
+      owners of the land the Meander Valley sits on, and pay respect to Elders
+      past and present.
+    </p>
+    <p class="foot__small">Add this site to your home screen — it works without signal.</p>
+  </div>
+</footer>
+
+</main>
+
+<!-- ══════════════════════════════════════════ DOCK ══════════════════════ -->
+<nav class="dock" id="dock" aria-label="Sections">
+  <div class="dock__pill">
+    <span class="dock__ink" id="dockInk" aria-hidden="true"></span>
+    <a href="#treatments" data-dock="treatments"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-leaf"></use></svg><span>Menu</span></a>
+    <a href="#sauna" data-dock="sauna"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heat"></use></svg><span>Sauna</span></a>
+    <a href="#chair" data-dock="chair"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chair"></use></svg><span>Chair</span></a>
+    <a href="#gift" data-dock="gift"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-gift"></use></svg><span>Gift</span></a>
+  </div>
+  <button class="dock__book" data-open-sheet="book">Book</button>
+</nav>
+
+<!-- ══════════════════════════════════════════ SHEET ═════════════════════ -->
+<div class="sheet" id="sheetBook" hidden>
+  <div class="sheet__scrim" data-close-sheet></div>
+  <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <button class="sheet__grab" data-close-sheet aria-label="Close"></button>
+    <h2 class="h3" id="sheetTitle">Book your hour</h2>
+    <p class="sheet__lede">One room, one therapist — so times go quickly. Ringing is fastest.</p>
+
+    <a class="btn btn--primary btn--wide" data-site="tel" href="#">
+      Call <span data-site="phone"></span>
+    </a>
+    <a class="btn btn--ghost btn--wide" data-site="mailto" href="#">Email us</a>
+
+    <form class="form" id="bookForm" novalidate>
+      <p class="form__intro">Or send a request and we'll come back to you.</p>
+      <label>Your name<input name="name" type="text" autocomplete="name" required></label>
+      <label>Phone<input name="phone" type="tel" autocomplete="tel" required></label>
+      <label>What you'd like<select name="want" id="wantSelect"></select></label>
+      <label>Best days and times<textarea name="when" rows="2" placeholder="e.g. Thursday afternoons, or any Saturday"></textarea></label>
+      <button class="btn btn--primary btn--wide" type="submit">Send request</button>
+      <p class="form__status" id="formStatus" role="status"></p>
+    </form>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ ICONS ═════════════════════ -->
+<svg style="display:none" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 32 32">
+    <path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+      d="M4 26c6-1 8-5 8-11 0 6 2 10 8 11M16 26V8M16 8c0-3 2-5 5-5-1 4-2 5-5 5Zm0 0c0-3-2-5-5-5 1 4 2 5 5 5Z"/>
+    <path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".55"
+      d="M20 26c6-1 8-5 8-11"/>
+  </symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2.5 2.5 0 0 1-2.7 2.5C10.8 19.6 4.4 13.2 4 5.7A2.5 2.5 0 0 1 6.5 3Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M3 6.5h18v11H3zM3 7l9 6 9-6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M4 20c0-9 6-14 16-15 1 10-4 16-13 16H4Zm4-2c2-5 5-8 9-10"/></symbol>
+  <symbol id="i-heat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M8 21c-2-2-2.5-4-1-6s2-3.5 1.5-6C11 10 12 12 11.5 15M15.5 21c2.5-2.5 3-5.5 1.5-8.5S15 6 15.5 3c-4 3-5.5 6.5-4.5 10"/></symbol>
+  <symbol id="i-chair" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 4h3a2 2 0 0 1 2 2v7H8a2 2 0 0 1-2-2V4Zm5 9h6a3 3 0 0 1 3 3v1a3 3 0 0 1-3 3h-6ZM6 13v7M20 20v1"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M3 9h18v3H3zM4.5 12v9h15v-9M12 9v12M12 9C10 4 5 4.5 6 7c.6 1.5 3.5 2 6 2Zm0 0c2-5 7-4.5 6-2-.6 1.5-3.5 2-6 2Z"/></symbol>
+  <symbol id="i-hands" viewBox="0 0 120 120"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M40 96V64c0-6-8-8-10-2l-6 16M40 70V38a5 5 0 0 1 10 0v26M50 64V34a5 5 0 0 1 10 0v30M60 64V40a5 5 0 0 1 10 0v28M70 68V46a5 5 0 0 1 10 0v30c0 14-9 24-22 24H50c-8 0-14-5-16-12"/></symbol>
+</svg>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
