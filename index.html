@@ -195,7 +195,7 @@ section{scroll-margin-top:var(--header-h);}
 
 /* ============ TRUST STRIP ============ */
 .trust-strip{background:var(--forest);color:var(--oat);padding:1.8rem 0;}
-.trust-strip .container{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;text-align:center;}
+.trust-strip .container{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;text-align:center;}
 .trust-item{display:flex;flex-direction:column;align-items:center;text-decoration:none;transition:transform .3s var(--ease);}
 .trust-item:hover,.trust-item:focus-visible{transform:translateY(-2px);}
 .trust-icon{
@@ -267,6 +267,16 @@ section{scroll-margin-top:var(--header-h);}
   .feature.reverse .feature-grid{direction:rtl;}
   .feature.reverse .feature-body{direction:ltr;}
   .feature.reverse .feature-media{direction:ltr;}
+}
+
+/* combo panels: sauna + chair, side by side, each keeping its own identity */
+.combo-grid{display:grid;gap:var(--space-5);}
+.combo-panel-visual{aspect-ratio:4/3;box-shadow:var(--shadow-lg);margin-bottom:1.4rem;}
+.combo-panel h3{font-size:clamp(1.35rem,3.6vw,1.7rem);margin-bottom:.5rem;}
+.combo-panel .benefit-list{margin-bottom:0;}
+.combo-footer{margin-top:var(--space-5);max-width:640px;}
+@media(min-width:860px){
+  .combo-grid{grid-template-columns:1fr 1fr;gap:var(--space-6);align-items:start;}
 }
 
 /* ============ TREATMENT MENU (categories, price rows, variants) ============ */
@@ -484,8 +494,7 @@ section{scroll-margin-top:var(--header-h);}
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a class="nav-link" href="#treatments">Treatments</a>
-      <a class="nav-link" href="#sauna">Infrared Sauna</a>
-      <a class="nav-link" href="#chair">Massage Chair</a>
+      <a class="nav-link" href="#sauna-chair">Sauna &amp; Chair</a>
       <a class="nav-link" href="#about">About</a>
       <a class="nav-link" href="#book">Contact</a>
     </nav>
@@ -499,8 +508,7 @@ section{scroll-margin-top:var(--header-h);}
 <div class="mobile-menu" id="mobileMenu">
   <ul>
     <li><a href="#treatments" class="mm-link">Treatments</a></li>
-    <li><a href="#sauna" class="mm-link">Infrared Sauna</a></li>
-    <li><a href="#chair" class="mm-link">Massage Chair</a></li>
+    <li><a href="#sauna-chair" class="mm-link">Sauna &amp; Chair</a></li>
     <li><a href="#about" class="mm-link">About</a></li>
     <li><a href="#book" class="mm-link">Contact</a></li>
   </ul>
@@ -531,19 +539,12 @@ section{scroll-margin-top:var(--header-h);}
 <!-- ============ TRUST STRIP ============ -->
 <div class="trust-strip">
   <div class="container">
-    <a href="#sauna" class="trust-item">
+    <a href="#sauna-chair" class="trust-item">
       <span class="trust-icon" aria-hidden="true">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 21c4-2 6-5 6-9 0-4-2-6-3-9-1 3-1 5-3 6-1-2-1-3 0-6-4 3-6 7-6 10 0 4 2 6 6 8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
       </span>
-      <strong>Infrared Sauna</strong>
-      <span>Heat therapy for body &amp; mind</span>
-    </a>
-    <a href="#chair" class="trust-item">
-      <span class="trust-icon" aria-hidden="true">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M6 11V6a1 1 0 011-1h10a1 1 0 011 1v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="5" y="11" width="14" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M7 17v4M17 17v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      </span>
-      <strong>Massage Chair</strong>
-      <span>AI-guided, walk-in relief</span>
+      <strong>Sauna &amp; Chair</strong>
+      <span>Heat therapy + AI-guided massage</span>
     </a>
     <a href="#cat-facials" class="trust-item">
       <span class="trust-icon" aria-hidden="true">
@@ -585,8 +586,8 @@ section{scroll-margin-top:var(--header-h);}
       </div>
       <div class="menu-list">
         <div class="menu-item">
-          <p class="menu-item-title">Relaxation, Aromatherapy &amp; Deep Tissue Massage</p>
-          <p class="menu-item-desc">Choose your style on the day — a slow, flowing relaxation massage, an aromatherapy massage with a custom essential oil blend, or firmer, more targeted deep tissue work. Whichever you choose, the same gentle care.</p>
+          <p class="menu-item-title">Relaxation Massage</p>
+          <p class="menu-item-desc">A slow, flowing massage that relieves muscle tension, with firmer pressure applied for targeted relief where you need it most.</p>
           <div class="session-box" style="margin-top:1.1rem;">
             <div class="opt"><strong>30 min</strong><span>$65</span></div>
             <div class="opt"><strong>45 min</strong><span>$80</span></div>
@@ -602,7 +603,7 @@ section{scroll-margin-top:var(--header-h);}
           <p class="menu-item-desc">A wonderful and relaxing way to relieve muscle tension and pain, while easing stress and anxiety, using a variety of warmed basalt rocks. This treatment also includes a foot exfoliation.</p>
           <div class="menu-addon-block">
             <p class="label">Recommended Add-ons</p>
-            <div class="menu-addon-row"><span>Infrared Sauna</span><span class="amt">45 min · $55</span></div>
+            <div class="menu-addon-row"><span>Sauna &amp; Chair</span><span class="amt">45 min · $55</span></div>
             <div class="menu-addon-row"><span>Petite Facial</span><span class="amt">30 min · $60</span></div>
           </div>
         </div>
@@ -644,7 +645,7 @@ section{scroll-margin-top:var(--header-h);}
           </div>
           <div class="menu-addon-block">
             <p class="label">Recommended Add-ons</p>
-            <div class="menu-addon-row"><span>Massage</span><span class="amt">30 min · $55</span></div>
+            <div class="menu-addon-row"><span>Back, Neck &amp; Shoulder Massage</span><span class="amt">30 min · $60</span></div>
             <div class="menu-addon-row"><span>Orange Crème Hair Masque</span><span class="amt">15 min · $30</span></div>
           </div>
         </div>
@@ -748,7 +749,7 @@ section{scroll-margin-top:var(--header-h);}
         </div>
       </div>
       <div class="addon-grid">
-        <div class="addon-row"><span>Infrared Sauna</span><span class="amt">45 min · $55</span></div>
+        <div class="addon-row"><span>Sauna &amp; Chair</span><span class="amt">45 min · $55</span></div>
         <div class="addon-row"><span>Back, Neck &amp; Shoulder Massage</span><span class="amt">30 min · $60</span></div>
         <div class="addon-row"><span>Petite Facial</span><span class="amt">30 min · $60</span></div>
         <div class="addon-row"><span>Botanical Barefoot Treatment</span><span class="amt">30 min · $60</span></div>
@@ -764,82 +765,29 @@ section{scroll-margin-top:var(--header-h);}
   </div>
 </section>
 
-<!-- ============ FEATURE 2: SAUNA ============ -->
-<section class="section feature bg-oat" id="sauna">
+<!-- ============ FEATURE 2: SAUNA & CHAIR COMBO ============ -->
+<section class="section feature bg-mist" id="sauna-chair">
   <svg class="warmth-rings" width="480" height="480" viewBox="0 0 480 480" style="top:-120px;right:-160px;">
     <circle cx="240" cy="240" r="90"/><circle cx="240" cy="240" r="90"/><circle cx="240" cy="240" r="90"/>
   </svg>
   <div class="container">
-    <div class="feature-grid">
-      <div class="feature-media reveal">
-        <div class="photo-frame no-gradient">
-          <img src="images/infrared-sauna.jpg" alt="Inside our infrared sauna — cedar interior with a folded towel, water bottle and fresh greenery" class="photo-treated" loading="lazy">
-        </div>
-      </div>
-      <div class="feature-body reveal">
-        <p class="eyebrow">Heat Therapy</p>
-        <h2>The Infrared Sauna</h2>
-        <p class="feature-lede">A gentle, deeply warming therapy that soothes the body and quiets the mind. However you arrive — tired, tense or simply in need of a pause — let the warmth of the infrared sauna ease you into a state of calm.</p>
-        <div class="benefit-list">
-          <div class="benefit-item">
-            <span class="ico" aria-hidden="true">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 21c4-2 6-5 6-9 0-4-2-6-3-9-1 3-1 5-3 6-1-2-1-3 0-6-4 3-6 7-6 10 0 4 2 6 6 8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            </span>
-            <div><h4>Deep muscle recovery</h4><p>Soothes everyday tension and soreness, leaving your body feeling light, loose and renewed.</p></div>
-          </div>
-          <div class="benefit-item">
-            <span class="ico" aria-hidden="true">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 12h4l2-7 4 14 2-7h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <div><h4>Better circulation</h4><p>Gentle, penetrating warmth encourages healthy blood flow and eases stiff, tired joints.</p></div>
-          </div>
-          <div class="benefit-item">
-            <span class="ico" aria-hidden="true">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <div><h4>A gentle cleanse</h4><p>A comfortable, restorative sweat that helps the body feel refreshed, at a lower, more soothing temperature than a traditional sauna.</p></div>
-          </div>
-          <div class="benefit-item">
-            <span class="ico" aria-hidden="true">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/></svg>
-            </span>
-            <div><h4>Calmer, clearer skin</h4><p>Improved circulation brings a natural colour and glow back to tired-looking skin.</p></div>
-          </div>
-          <div class="benefit-item">
-            <span class="ico" aria-hidden="true">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M17 3a7 7 0 100 14H8l-4 3 1-4a7 7 0 015-13z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            </span>
-            <div><h4>Lower stress, deeper sleep</h4><p>Twenty quiet minutes of warmth is a gentle, reliable way to settle the mind and unwind the body.</p></div>
-          </div>
-        </div>
-        <div class="session-box">
-          <div class="opt"><strong>Up to 60 min</strong><span>$69 solo</span></div>
-          <div class="opt"><strong>Up to 60 min</strong><span>$99 for two</span></div>
-        </div>
-        <p style="font-size:.85rem;color:var(--bark);opacity:.75;margin-bottom:.5rem;">Each session includes Massage Chair time, up to 25 minutes.</p>
-        <p style="font-size:.85rem;color:var(--bark);opacity:.75;margin-bottom:1.3rem;">Prefer to pair it with another treatment? The sauna is also available as a 45-minute add-on for $55.</p>
-        <a href="#book" class="btn btn-primary">Book the Sauna</a>
-      </div>
+    <div class="section-head reveal">
+      <p class="eyebrow">Heat &amp; Massage Therapy</p>
+      <h2>The Sauna &amp; Chair Experience</h2>
+      <p>Start in the Remedial Deluxe+ chair, move into the infrared sauna, then finish with a herbal tea — the full experience, booked as one session.</p>
     </div>
-  </div>
-</section>
 
-<!-- ============ FEATURE 3: CHAIR ============ -->
-<section class="section feature reverse bg-mist" id="chair">
-  <div class="container">
-    <div class="feature-grid">
-      <div class="feature-media reveal">
-        <div class="chair-scene">
+    <div class="combo-grid">
+      <div class="combo-panel reveal">
+        <div class="chair-scene combo-panel-visual">
           <div class="chair-scene-bg"></div>
           <div class="chair-scene-card">
             <img src="images/massage-chair.jpg" alt="The Remedial Deluxe+ massage chair used in our treatment room" loading="lazy">
           </div>
         </div>
-      </div>
-      <div class="feature-body reveal">
         <p class="eyebrow">Smart Massage Technology</p>
-        <h2>Meet the Remedial Deluxe+</h2>
-        <p class="feature-lede">Sit back into full-body, zero-gravity comfort. Our Remedial Deluxe+ chair uses AI health detection and Dual-Pro 4D massage technology to read your body and tailor every session to you — no appointment needed.</p>
+        <h3>Remedial Deluxe+ Chair</h3>
+        <p class="feature-lede">Full-body, zero-gravity comfort. AI health detection and Dual-Pro 4D massage technology read your body and tailor the session to you.</p>
         <div class="benefit-list">
           <div class="benefit-item">
             <span class="ico" aria-hidden="true">
@@ -872,12 +820,67 @@ section{scroll-margin-top:var(--header-h);}
             <div><h4>Settle in and switch off</h4><p>Bluetooth surround sound and a 7-inch touchscreen make it easy to relax into your own soundtrack.</p></div>
           </div>
         </div>
-        <div class="session-box">
-          <div class="opt"><strong>15 min</strong><span>$25</span></div>
-          <div class="opt"><strong>30 min</strong><span>$45</span></div>
-        </div>
-        <a href="#book" class="btn btn-primary">Book the Chair</a>
       </div>
+
+      <div class="combo-panel reveal">
+        <div class="photo-frame no-gradient combo-panel-visual">
+          <img src="images/infrared-sauna.jpg" alt="Inside our infrared sauna — cedar interior with a folded towel, water bottle and fresh greenery" class="photo-treated" loading="lazy">
+        </div>
+        <p class="eyebrow">Heat Therapy</p>
+        <h3>Infrared Sauna</h3>
+        <p class="feature-lede">A gentle, deeply warming therapy that soothes the body and quiets the mind.</p>
+        <div class="benefit-list">
+          <div class="benefit-item">
+            <span class="ico" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 21c4-2 6-5 6-9 0-4-2-6-3-9-1 3-1 5-3 6-1-2-1-3 0-6-4 3-6 7-6 10 0 4 2 6 6 8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <div><h4>Deep muscle recovery</h4><p>Soothes everyday tension and soreness, leaving your body feeling light and renewed.</p></div>
+          </div>
+          <div class="benefit-item">
+            <span class="ico" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 12h4l2-7 4 14 2-7h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div><h4>Better circulation</h4><p>Gentle, penetrating warmth encourages healthy blood flow and eases stiff, tired joints.</p></div>
+          </div>
+          <div class="benefit-item">
+            <span class="ico" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div><h4>A gentle cleanse</h4><p>A comfortable, restorative sweat, at a lower temperature than a traditional sauna.</p></div>
+          </div>
+          <div class="benefit-item">
+            <span class="ico" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/></svg>
+            </span>
+            <div><h4>Calmer, clearer skin</h4><p>Improved circulation brings a natural colour and glow back to tired-looking skin.</p></div>
+          </div>
+          <div class="benefit-item">
+            <span class="ico" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M17 3a7 7 0 100 14H8l-4 3 1-4a7 7 0 015-13z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <div><h4>Lower stress, deeper sleep</h4><p>Quiet minutes of warmth are a gentle, reliable way to settle the mind and unwind the body.</p></div>
+          </div>
+          <div class="benefit-item">
+            <span class="ico" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 9h13v6a4 4 0 01-4 4H8a4 4 0 01-4-4V9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M17 10h1.5a2.5 2.5 0 010 5H17" stroke="currentColor" stroke-width="1.6"/><path d="M8 3c0 1-1 1-1 2s1 1 1 2M12 3c0 1-1 1-1 2s1 1 1 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </span>
+            <div><h4>Finish with herbal tea</h4><p>A warm, caffeine-free herbal tea to finish, included in every session.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="combo-footer reveal">
+      <div class="session-box">
+        <div class="opt">
+          <strong>Up to 60 min</strong>
+          <span>$69 solo</span>
+          <span>$99 for two</span>
+        </div>
+      </div>
+      <p style="font-size:.85rem;color:var(--bark);opacity:.75;margin-bottom:.5rem;">One 60-minute slot, including up to 25 minutes in the chair.</p>
+      <p style="font-size:.85rem;color:var(--bark);opacity:.75;margin-bottom:1.3rem;">Prefer to pair it with another treatment? Add the Sauna &amp; Chair combo for 45 minutes at $55.</p>
+      <a href="#book" class="btn btn-primary">Book the Sauna &amp; Chair</a>
     </div>
   </div>
 </section>
@@ -935,7 +938,7 @@ section{scroll-margin-top:var(--header-h);}
     <div class="section-head">
       <p class="eyebrow on-dark">Get In Touch</p>
       <h2>Book Your Visit</h2>
-      <p style="color:var(--mist);">Send a request below and we'll be in touch to confirm your visit — or call us directly, especially for same-day chair sessions.</p>
+      <p style="color:var(--mist);">Send a request below and we'll be in touch to confirm your visit — or call us directly for anything urgent.</p>
     </div>
     <div class="book-grid">
       <div class="book-info reveal">
@@ -950,7 +953,8 @@ section{scroll-margin-top:var(--header-h);}
           <table class="hours-table">
             <tr><td>Monday – Wednesday</td><td>10am – 5pm</td></tr>
             <tr><td>Saturday</td><td>10am – 3pm</td></tr>
-            <tr><td>Thursday, Friday &amp; Sunday</td><td>Closed</td></tr>
+            <tr><td>Sunday (sauna only)</td><td>10am – 3pm</td></tr>
+            <tr><td>Thursday &amp; Friday</td><td>Closed</td></tr>
           </table>
         </div>
       </div>
@@ -971,8 +975,6 @@ section{scroll-margin-top:var(--header-h);}
             <option value="">Choose one…</option>
             <optgroup label="Massage Therapy">
               <option>Relaxation Massage</option>
-              <option>Aromatherapy Massage</option>
-              <option>Deep Tissue Massage</option>
               <option>Hot Stone Massage</option>
             </optgroup>
             <optgroup label="Facials">
@@ -991,14 +993,12 @@ section{scroll-margin-top:var(--header-h);}
               <option>Peppermint Foot Spa</option>
             </optgroup>
             <optgroup label="Spa Packages">
-              <option>A Big Escape Package</option>
+              <option>A Little Escape Package</option>
               <option>Remedial Package</option>
               <option>Revitalise Package</option>
-              <option>A Little Escape Package</option>
             </optgroup>
             <optgroup label="Other">
-              <option>Infrared Sauna</option>
-              <option>Massage Chair</option>
+              <option>Sauna &amp; Chair Combo</option>
               <option>Not sure yet</option>
             </optgroup>
           </select>
@@ -1014,6 +1014,7 @@ section{scroll-margin-top:var(--header-h);}
             <option>60 min</option>
             <option>75 min</option>
             <option>90 min</option>
+            <option>110 min</option>
             <option>120 min</option>
           </select>
         </div>
@@ -1059,8 +1060,7 @@ section{scroll-margin-top:var(--header-h);}
         <h4>Explore</h4>
         <ul>
           <li><a href="#treatments">Treatments</a></li>
-          <li><a href="#sauna">Infrared Sauna</a></li>
-          <li><a href="#chair">Massage Chair</a></li>
+          <li><a href="#sauna-chair">Sauna &amp; Chair</a></li>
           <li><a href="#about">About Us</a></li>
         </ul>
       </div>
@@ -1077,7 +1077,8 @@ section{scroll-margin-top:var(--header-h);}
         <ul>
           <li>Mon–Wed: 10am–5pm</li>
           <li>Sat: 10am–3pm</li>
-          <li>Thu, Fri &amp; Sun: Closed</li>
+          <li>Sun: 10am–3pm (sauna only)</li>
+          <li>Thu &amp; Fri: Closed</li>
         </ul>
       </div>
     </div>
@@ -1119,18 +1120,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- DATA ---------- */
   var PACKAGES = [
-    { n:'01', name:'A Big Escape', duration:'60 min', price:'$150', img:5240623,
-      short:'A back-of-body massage, mini facial, scalp massage, foot massage and exfoliation.',
-      long:'A complete top-to-toe reset in a single hour: a back-of-body massage, a mini facial, a scalp massage, a foot massage and a full body exfoliation. A big escape for whenever you want it all, without giving up a whole afternoon.' },
-    { n:'02', name:'Remedial', duration:'120 min', price:'$150', img:3865676,
-      short:'Infrared sauna, followed by a full hour of deep tissue massage.',
-      long:'Begin with time in the infrared sauna to gently warm and loosen the muscles, then settle in for a full hour of deep tissue massage. A thorough, restorative combination for anyone carrying real tension.' },
-    { n:'03', name:'Revitalise', duration:'120 min', price:'$210', img:27495825,
-      short:'A full hour of relaxation massage, followed by a full hour spa facial.',
-      long:'A generous, unhurried afternoon: a full hour relaxation massage followed by a full hour luxurious spa facial. Plenty of time to properly switch off.' },
-    { n:'04', name:'A Little Escape', duration:'75 min', price:'$140', img:5490094,
+    { name:'A Little Escape', duration:'60 min', price:'$140', img:5490094,
       short:'A hydrating facial and a back, neck and shoulder massage.',
-      long:'A shorter escape for whenever you need one: a 45-minute hydrating facial paired with a 30-minute back, neck and shoulder massage. A lovely way to reset in just over an hour.' }
+      long:'A shorter escape for whenever you need one: a 30-minute hydrating facial paired with a 30-minute back, neck and shoulder massage. A lovely way to reset within the hour.' },
+    { name:'Remedial', duration:'110 min', price:'$150', img:3865676,
+      short:'Infrared sauna, followed by a full body massage.',
+      long:'Begin with time in the infrared sauna to gently warm and loosen the muscles, then settle in for a full body massage. A thorough, restorative combination for anyone carrying real tension.' },
+    { name:'Revitalise', duration:'120 min', price:'$210', img:27495825,
+      short:'A full hour of relaxation massage, followed by a full hour spa facial with a foot exfoliation.',
+      long:'A generous, unhurried afternoon: a full hour relaxation massage followed by a full hour luxurious spa facial, with a foot exfoliation included. Plenty of time to properly switch off.' }
   ];
 
   var TESTIMONIALS = [
@@ -1142,7 +1140,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var FAQS = [
     { q:'What should I wear?', a:'Loose, comfortable clothing to arrive and leave in is lovely — robes, towels and sandals are provided for treatments and the sauna, so there\'s nothing to think about once you\'re here.' },
-    { q:'Do I need to book ahead?', a:'For treatments and the sauna, yes — a day or two\'s notice helps us set aside time just for you. The massage chair is walk-in, no booking required, for whenever the moment suits.' },
+    { q:'Do I need to book ahead?', a:'Yes, for everything now, including the Sauna &amp; Chair combo — a day or two\'s notice helps us set aside time just for you.' },
     { q:'What\'s your cancellation policy?', a:'We simply ask for 24 hours\' notice where possible, so we can offer the spot to someone else who needs a little calm.' },
     { q:'Do you sell gift vouchers?', a:'Yes — in person or over the phone, for any dollar amount or a specific treatment. A gentle way to share a moment of relaxation with someone.' },
     { q:'Anything I should mention before booking?', a:'Please let us know about pregnancy, heart conditions, skin sensitivities or anything else relevant when you book — especially before an infrared sauna session — so we can look after you properly.' }
@@ -1259,7 +1257,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return '<button type="button" class="treat-card" data-index="' + i + '" aria-haspopup="dialog">' +
       '<div class="photo-frame no-gradient"><img src="' + pexelsUrl(t.img, 800) + '" alt="' + t.name + '" class="photo-treated" loading="lazy" width="800" height="600"></div>' +
       '<div class="treat-card-body">' +
-      '<span class="num">' + t.n + ' — ' + t.duration + '</span>' +
+      '<span class="num">' + t.duration + '</span>' +
       '<h3>' + t.name + '</h3>' +
       '<p>' + t.short + '</p>' +
       '<span class="price">' + t.price + '</span>' +
