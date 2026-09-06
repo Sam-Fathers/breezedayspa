@@ -215,24 +215,11 @@ section{scroll-margin-top:var(--header-h);}
 .bg-forest{background:var(--forest);color:var(--oat);}
 .bg-forest h2,.bg-forest h3{color:var(--oat-light);}
 
-/* ============ FEATURE: SAUNA / CHAIR ============ */
+/* ============ FEATURE: SAUNA ============ */
 .feature{position:relative;z-index:0;overflow:hidden;}
 .feature-grid{display:grid;gap:var(--space-4);}
 .feature-media{position:relative;}
 .feature-media .photo-frame{aspect-ratio:4/3;box-shadow:var(--shadow-lg);}
-.chair-scene{
-  position:relative;aspect-ratio:4/3;border-radius:var(--radius-lg);overflow:hidden;
-  box-shadow:var(--shadow-lg);background:var(--mist);
-}
-.chair-scene-bg{
-  position:absolute;inset:0;
-  background:
-    radial-gradient(circle at 26% 18%,rgba(143,163,127,.45),transparent 58%),
-    radial-gradient(circle at 82% 88%,rgba(184,135,90,.32),transparent 55%),
-    linear-gradient(155deg,var(--oat-light) 0%,var(--mist) 55%,var(--oat) 100%);
-}
-.chair-scene-card{position:absolute;inset:7% 9% 5%;display:flex;align-items:center;justify-content:center;}
-.chair-scene-card img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 26px 34px rgba(20,31,23,.32));}
 .feature-body h2{font-size:clamp(2rem,6vw,2.9rem);margin-bottom:.5rem;}
 .feature-lede{font-size:1.08rem;color:var(--bark);opacity:.9;margin-bottom:1.6rem;max-width:48ch;}
 .benefit-list{display:grid;gap:.85rem;margin-bottom:1.8rem;}
@@ -264,19 +251,6 @@ section{scroll-margin-top:var(--header-h);}
 
 @media(min-width:860px){
   .feature-grid{grid-template-columns:1fr 1fr;align-items:center;gap:var(--space-5);}
-  .feature.reverse .feature-grid{direction:rtl;}
-  .feature.reverse .feature-body{direction:ltr;}
-  .feature.reverse .feature-media{direction:ltr;}
-}
-
-/* combo panels: sauna + chair, side by side, each keeping its own identity */
-.combo-grid{display:grid;gap:var(--space-5);}
-.combo-panel-visual{aspect-ratio:4/3;box-shadow:var(--shadow-lg);margin-bottom:1.4rem;}
-.combo-panel h3{font-size:clamp(1.35rem,3.6vw,1.7rem);margin-bottom:.5rem;}
-.combo-panel .benefit-list{margin-bottom:0;}
-.combo-footer{margin-top:var(--space-5);max-width:640px;}
-@media(min-width:860px){
-  .combo-grid{grid-template-columns:1fr 1fr;gap:var(--space-6);align-items:start;}
 }
 
 /* ============ TREATMENT MENU (categories, price rows, variants) ============ */
@@ -1050,7 +1024,7 @@ section{scroll-margin-top:var(--header-h);}
     </div>
     <div class="footer-bottom">
       <span>© 2026 Breeze Day Spa, Deloraine TAS</span>
-      <span>Design mock-up</span>
+      <span>v1.0</span>
     </div>
   </div>
 </footer>
