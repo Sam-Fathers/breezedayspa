@@ -347,18 +347,12 @@ section{scroll-margin-top:var(--header-h);}
 }
 .treat-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
 .treat-card .photo-frame{aspect-ratio:4/3;border-radius:0;}
-.card-info-badge{
-  position:absolute;top:.7rem;right:.7rem;width:28px;height:28px;border-radius:50%;
-  background:rgba(20,31,23,.55);backdrop-filter:blur(4px);color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-display);font-size:.95rem;font-weight:600;
-  pointer-events:none;
-}
 .treat-card-body{padding:1.15rem 1.2rem 1.3rem;flex:1;display:flex;flex-direction:column;}
 .treat-card-body .num{font-size:.7rem;letter-spacing:.14em;color:var(--clay-deep);font-weight:700;margin-bottom:.35rem;}
 .treat-card-body h3{font-size:1.18rem;margin-bottom:.3rem;}
 .treat-card-body .meta{font-size:.78rem;color:var(--bark);opacity:.75;margin-bottom:.55rem;text-transform:uppercase;letter-spacing:.04em;}
 .treat-card-body p{font-size:.9rem;color:var(--bark);opacity:.88;flex:1;}
+.treat-card-body .see-more{color:var(--clay-deep);font-weight:700;opacity:1;white-space:nowrap;}
 .treat-card-body .price{margin-top:.9rem;font-family:var(--font-display);color:var(--forest);font-size:1.05rem;}
 
 /* Treatment modal */
@@ -433,7 +427,10 @@ section{scroll-margin-top:var(--header-h);}
 .faq-a p{padding:0 .2rem 1.4rem;color:var(--bark);opacity:.88;max-width:60ch;font-size:.95rem;}
 
 /* ============ BOOKING / CONTACT ============ */
-.book-grid{display:grid;gap:var(--space-4);}
+.book-grid{display:grid;gap:var(--space-4);grid-template-areas:"contact" "form" "hours";}
+.book-contact{grid-area:contact;}
+.book-form{grid-area:form;}
+.book-hours{grid-area:hours;}
 .info-card{background:rgba(250,246,236,.06);border:1px solid var(--line-light);border-radius:var(--radius-md);padding:1.6rem;}
 .info-card + .info-card{margin-top:1.2rem;}
 .info-card h3{font-size:1.15rem;color:var(--oat-light);margin-bottom:.7rem;}
@@ -459,7 +456,7 @@ section{scroll-margin-top:var(--header-h);}
 }
 .form-success.show{display:flex;}
 @media(min-width:900px){
-  .book-grid{grid-template-columns:.85fr 1.15fr;gap:var(--space-6);}
+  .book-grid{grid-template-columns:.85fr 1.15fr;grid-template-areas:"contact form" "hours form";gap:var(--space-6);}
 }
 
 /* ============ FOOTER ============ */
@@ -474,6 +471,12 @@ section{scroll-margin-top:var(--header-h);}
 .footer-social{display:flex;gap:.8rem;margin-top:1.2rem;}
 .footer-social a{width:36px;height:36px;border-radius:50%;border:1px solid var(--line-light);display:flex;align-items:center;justify-content:center;transition:background .3s,border-color .3s;}
 .footer-social a:hover{background:rgba(255,255,255,.08);border-color:var(--moss-light);}
+.footer-social a.fb-wordmark{
+  width:auto;height:32px;border-radius:6px;padding:0 .85rem;border-color:#1877F2;
+  background:#1877F2;color:#fff;font-family:var(--font-body);font-weight:700;
+  font-size:.92rem;letter-spacing:-0.01em;
+}
+.footer-social a.fb-wordmark:hover{background:#166FE0;border-color:#166FE0;}
 .footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.8rem;padding-top:var(--space-3);font-size:.8rem;opacity:.65;}
 @media(min-width:860px){
   .footer-top{grid-template-columns:1.3fr .8fr .8fr .9fr;}
@@ -900,25 +903,14 @@ section{scroll-margin-top:var(--header-h);}
     <div class="section-head">
       <p class="eyebrow on-dark">Get In Touch</p>
       <h2>Book Your Visit</h2>
-      <p style="color:var(--mist);">Send a request below and we'll be in touch to confirm your visit — or call us directly for anything urgent.</p>
+      <p style="color:var(--mist);">Send a request below and we'll be in touch to confirm your visit — or call us directly.</p>
     </div>
     <div class="book-grid">
-      <div class="book-info reveal">
-        <div class="info-card">
-          <h3>Contact</h3>
-          <p><a href="tel:+61456148459">0456 148 459</a></p>
-          <p><a href="mailto:hello@breezedayspa.com.au">hello@breezedayspa.com.au</a></p>
-          <p>Level 2, Suite 10/64 Emu Bay Rd<br>Deloraine, TAS 7304</p>
-        </div>
-        <div class="info-card">
-          <h3>Opening Hours</h3>
-          <table class="hours-table">
-            <tr><td>Monday – Wednesday</td><td>10am – 5pm</td></tr>
-            <tr><td>Saturday</td><td>10am – 3pm</td></tr>
-            <tr><td>Sunday (sauna only)</td><td>10am – 3pm</td></tr>
-            <tr><td>Thursday &amp; Friday</td><td>Closed</td></tr>
-          </table>
-        </div>
+      <div class="info-card book-contact reveal">
+        <h3>Contact</h3>
+        <p><a href="tel:+61456148459">0456 148 459</a></p>
+        <p><a href="mailto:hello@breezedayspa.com.au">hello@breezedayspa.com.au</a></p>
+        <p>Level 2, Suite 10/64 Emu Bay Rd<br>Deloraine, TAS 7304</p>
       </div>
       <form class="book-form reveal" id="bookForm">
         <div class="two-col">
@@ -1000,6 +992,15 @@ section{scroll-margin-top:var(--header-h);}
           Thank you — we'll be in touch shortly to confirm your visit.
         </div>
       </form>
+      <div class="info-card book-hours reveal">
+        <h3>Opening Hours</h3>
+        <table class="hours-table">
+          <tr><td>Monday – Wednesday</td><td>10am – 5pm</td></tr>
+          <tr><td>Saturday</td><td>10am – 3pm</td></tr>
+          <tr><td>Sunday (sauna only)</td><td>10am – 3pm</td></tr>
+          <tr><td>Thursday &amp; Friday</td><td>Closed</td></tr>
+        </table>
+      </div>
     </div>
   </div>
 </section>
@@ -1014,8 +1015,7 @@ section{scroll-margin-top:var(--header-h);}
         </a>
         <p>A calm, relaxing escape in Deloraine, Tasmania — massage, facials and heat therapy using beautiful Australian-made Waterlily products.</p>
         <div class="footer-social">
-          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V6h-3c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v6h3v-6H16l.5-3h-3V9.8c0-.5.2-.8.5-.8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></a>
+          <a href="#" aria-label="Facebook" class="fb-wordmark">facebook</a>
         </div>
       </div>
       <div class="footer-col">
@@ -1217,11 +1217,11 @@ document.addEventListener('DOMContentLoaded', function () {
   var grid = document.getElementById('packageGrid');
   grid.innerHTML = PACKAGES.map(function (t, i) {
     return '<button type="button" class="treat-card" data-index="' + i + '" aria-haspopup="dialog">' +
-      '<div class="photo-frame no-gradient"><img src="' + pexelsUrl(t.img, 800) + '" alt="' + t.name + '" class="photo-treated" loading="lazy" width="800" height="600"><span class="card-info-badge" aria-hidden="true">?</span></div>' +
+      '<div class="photo-frame no-gradient"><img src="' + pexelsUrl(t.img, 800) + '" alt="' + t.name + '" class="photo-treated" loading="lazy" width="800" height="600"></div>' +
       '<div class="treat-card-body">' +
       '<span class="num">' + t.duration + '</span>' +
       '<h3>' + t.name + '</h3>' +
-      '<p>' + t.short + '</p>' +
+      '<p>' + t.short + ' <span class="see-more">See more &rarr;</span></p>' +
       '<span class="price">' + t.price + '</span>' +
       '</div></button>';
   }).join('');
