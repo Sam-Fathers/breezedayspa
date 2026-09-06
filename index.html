@@ -427,12 +427,12 @@ section{scroll-margin-top:var(--header-h);}
 .faq-a p{padding:0 .2rem 1.4rem;color:var(--bark);opacity:.88;max-width:60ch;font-size:.95rem;}
 
 /* ============ BOOKING / CONTACT ============ */
-.book-grid{display:grid;gap:var(--space-4);grid-template-areas:"contact" "form" "hours";}
-.book-contact{grid-area:contact;}
-.book-form{grid-area:form;}
-.book-hours{grid-area:hours;}
+.book-grid{display:grid;gap:var(--space-4);}
+.book-info{display:contents;}
+.book-contact{order:1;}
+.book-form{order:2;}
+.book-hours{order:3;}
 .info-card{background:rgba(250,246,236,.06);border:1px solid var(--line-light);border-radius:var(--radius-md);padding:1.6rem;}
-.info-card + .info-card{margin-top:1.2rem;}
 .info-card h3{font-size:1.15rem;color:var(--oat-light);margin-bottom:.7rem;}
 .info-card p, .info-card a{color:var(--mist);font-size:.95rem;}
 .hours-table{width:100%;font-size:.92rem;color:var(--mist);}
@@ -456,7 +456,9 @@ section{scroll-margin-top:var(--header-h);}
 }
 .form-success.show{display:flex;}
 @media(min-width:900px){
-  .book-grid{grid-template-columns:.85fr 1.15fr;grid-template-areas:"contact form" "hours form";gap:var(--space-6);}
+  .book-grid{grid-template-columns:.85fr 1.15fr;gap:var(--space-6);}
+  .book-info{display:block;}
+  .book-hours{margin-top:1.2rem;}
 }
 
 /* ============ FOOTER ============ */
@@ -906,11 +908,22 @@ section{scroll-margin-top:var(--header-h);}
       <p style="color:var(--mist);">Send a request below and we'll be in touch to confirm your visit — or call us directly.</p>
     </div>
     <div class="book-grid">
-      <div class="info-card book-contact reveal">
-        <h3>Contact</h3>
-        <p><a href="tel:+61456148459">0456 148 459</a></p>
-        <p><a href="mailto:hello@breezedayspa.com.au">hello@breezedayspa.com.au</a></p>
-        <p>Level 2, Suite 10/64 Emu Bay Rd<br>Deloraine, TAS 7304</p>
+      <div class="book-info">
+        <div class="info-card book-contact reveal">
+          <h3>Contact</h3>
+          <p><a href="tel:+61456148459">0456 148 459</a></p>
+          <p><a href="mailto:hello@breezedayspa.com.au">hello@breezedayspa.com.au</a></p>
+          <p>Level 2, Suite 10/64 Emu Bay Rd<br>Deloraine, TAS 7304</p>
+        </div>
+        <div class="info-card book-hours reveal">
+          <h3>Opening Hours</h3>
+          <table class="hours-table">
+            <tr><td>Monday – Wednesday</td><td>10am – 5pm</td></tr>
+            <tr><td>Saturday</td><td>10am – 3pm</td></tr>
+            <tr><td>Sunday (sauna only)</td><td>10am – 3pm</td></tr>
+            <tr><td>Thursday &amp; Friday</td><td>Closed</td></tr>
+          </table>
+        </div>
       </div>
       <form class="book-form reveal" id="bookForm">
         <div class="two-col">
@@ -992,15 +1005,6 @@ section{scroll-margin-top:var(--header-h);}
           Thank you — we'll be in touch shortly to confirm your visit.
         </div>
       </form>
-      <div class="info-card book-hours reveal">
-        <h3>Opening Hours</h3>
-        <table class="hours-table">
-          <tr><td>Monday – Wednesday</td><td>10am – 5pm</td></tr>
-          <tr><td>Saturday</td><td>10am – 3pm</td></tr>
-          <tr><td>Sunday (sauna only)</td><td>10am – 3pm</td></tr>
-          <tr><td>Thursday &amp; Friday</td><td>Closed</td></tr>
-        </table>
-      </div>
     </div>
   </div>
 </section>
