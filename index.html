@@ -347,6 +347,13 @@ section{scroll-margin-top:var(--header-h);}
 }
 .treat-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
 .treat-card .photo-frame{aspect-ratio:4/3;border-radius:0;}
+.card-info-badge{
+  position:absolute;top:.7rem;right:.7rem;width:28px;height:28px;border-radius:50%;
+  background:rgba(20,31,23,.55);backdrop-filter:blur(4px);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-size:.95rem;font-weight:600;
+  pointer-events:none;
+}
 .treat-card-body{padding:1.15rem 1.2rem 1.3rem;flex:1;display:flex;flex-direction:column;}
 .treat-card-body .num{font-size:.7rem;letter-spacing:.14em;color:var(--clay-deep);font-weight:700;margin-bottom:.35rem;}
 .treat-card-body h3{font-size:1.18rem;margin-bottom:.3rem;}
@@ -544,7 +551,7 @@ section{scroll-margin-top:var(--header-h);}
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M9.5 7.5l1.5 1.5 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 12.5L7 21l5-2.5L17 21l-1.5-8.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
       </span>
       <strong>Qualified Therapist</strong>
-      <span>Across every treatment we offer</span>
+      <span>Across every treatment</span>
     </a>
     <a href="#cat-facials" class="trust-item">
       <span class="trust-icon" aria-hidden="true">
@@ -1210,7 +1217,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var grid = document.getElementById('packageGrid');
   grid.innerHTML = PACKAGES.map(function (t, i) {
     return '<button type="button" class="treat-card" data-index="' + i + '" aria-haspopup="dialog">' +
-      '<div class="photo-frame no-gradient"><img src="' + pexelsUrl(t.img, 800) + '" alt="' + t.name + '" class="photo-treated" loading="lazy" width="800" height="600"></div>' +
+      '<div class="photo-frame no-gradient"><img src="' + pexelsUrl(t.img, 800) + '" alt="' + t.name + '" class="photo-treated" loading="lazy" width="800" height="600"><span class="card-info-badge" aria-hidden="true">?</span></div>' +
       '<div class="treat-card-body">' +
       '<span class="num">' + t.duration + '</span>' +
       '<h3>' + t.name + '</h3>' +
