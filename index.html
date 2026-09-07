@@ -237,6 +237,13 @@ section{scroll-margin-top:var(--header-h);}
 .session-box .opt{display:flex;flex-direction:column;}
 .session-box .opt strong{font-family:var(--font-display);font-size:1.15rem;color:var(--forest);}
 .session-box .opt span{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--bark);opacity:.75;}
+.sunday-callout{
+  background:var(--oat);border:1.5px solid var(--clay);border-radius:var(--radius-md);
+  padding:1.3rem 1.4rem;margin-bottom:1.3rem;
+}
+.sunday-callout h4{font-family:var(--font-display);font-size:1.05rem;color:var(--forest);margin-bottom:.4rem;}
+.sunday-callout p{font-size:.92rem;color:var(--bark);opacity:.9;margin-bottom:.6rem;}
+.sunday-callout .add-on-price{font-size:.85rem;font-weight:700;color:var(--clay-deep);}
 
 /* warmth ring signature graphic, used behind the sauna feature */
 .warmth-rings{position:absolute;pointer-events:none;z-index:-1;opacity:.55;}
@@ -819,6 +826,11 @@ section{scroll-margin-top:var(--header-h);}
             <span>$85 for two</span>
           </div>
         </div>
+        <div class="sunday-callout">
+          <h4>Sunday Sauna Session</h4>
+          <p>Sundays only, start with a 20-minute Back, Neck &amp; Shoulder massage before your sauna. A hot towel finish wipes away the massage oil, then it's straight into the heat, finishing with a herbal tea.</p>
+          <span class="add-on-price">+ Back, Neck &amp; Shoulder Massage add-on · 20 min · $35</span>
+        </div>
         <p style="font-size:.85rem;color:var(--bark);opacity:.75;margin-bottom:1.3rem;">Prefer to pair it with another treatment? The sauna is also available as a 45-minute add-on for $55.</p>
         <a href="#book" class="btn btn-primary">Book the Sauna</a>
       </div>
@@ -894,7 +906,7 @@ section{scroll-margin-top:var(--header-h);}
           <table class="hours-table">
             <tr><td>Monday – Wednesday</td><td>10am – 5pm</td></tr>
             <tr><td>Saturday</td><td>10am – 3pm</td></tr>
-            <tr><td>Sunday (sauna only)</td><td>10am – 3pm</td></tr>
+            <tr><td>Sunday (sauna only)</td><td>9am – 5pm</td></tr>
             <tr><td>Thursday &amp; Friday</td><td>Closed</td></tr>
           </table>
         </div>
@@ -940,6 +952,7 @@ section{scroll-margin-top:var(--header-h);}
             </optgroup>
             <optgroup label="Other">
               <option>Infrared Sauna</option>
+              <option>Sunday Sauna + Massage</option>
               <option>Not sure yet</option>
             </optgroup>
           </select>
@@ -949,10 +962,12 @@ section{scroll-margin-top:var(--header-h);}
           <select id="duration" name="duration">
             <option value="">Not sure / fixed duration</option>
             <option>15 min</option>
+            <option>20 min</option>
             <option>25 min</option>
             <option>30 min</option>
             <option>45 min</option>
             <option>60 min</option>
+            <option>65 min</option>
             <option>75 min</option>
             <option>90 min</option>
             <option>110 min</option>
@@ -1017,14 +1032,14 @@ section{scroll-margin-top:var(--header-h);}
         <ul>
           <li>Mon–Wed: 10am–5pm</li>
           <li>Sat: 10am–3pm</li>
-          <li>Sun: 10am–3pm (sauna only)</li>
+          <li>Sun: 9am–5pm (sauna only)</li>
           <li>Thu &amp; Fri: Closed</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Breeze Day Spa, Deloraine TAS</span>
-      <span>v1.0</span>
+      <span>v1.2</span>
     </div>
   </div>
 </footer>
@@ -1060,9 +1075,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- DATA ---------- */
   var PACKAGES = [
-    { name:'A Little Escape', duration:'60 min', price:'$140', img:5490094,
-      short:'A hydrating facial and a back, neck and shoulder massage.',
-      long:'A shorter escape for whenever you need one: a 30-minute hydrating facial paired with a 30-minute back, neck and shoulder massage. A lovely way to reset within the hour.' },
+    { name:'A Little Escape', duration:'65 min', price:'$140', img:5490094,
+      short:'A back-of-body massage, mini facial, scalp massage and foot exfoliation.',
+      long:'A complete top-to-toe reset in just over an hour: a back-of-body massage, mini facial, scalp massage and finishing off with a foot exfoliation. A little escape for whenever you need one, without giving up a whole afternoon.' },
     { name:'Remedial', duration:'110 min', price:'$150', img:3865676,
       short:'Infrared sauna, followed by a full body massage.',
       long:'Begin with time in the infrared sauna to gently warm and loosen the muscles, then settle in for a full body massage. A thorough, restorative combination for anyone carrying real tension.' },
