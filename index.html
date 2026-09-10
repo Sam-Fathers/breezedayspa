@@ -237,13 +237,18 @@ section{scroll-margin-top:var(--header-h);}
 .session-box .opt{display:flex;flex-direction:column;}
 .session-box .opt strong{font-family:var(--font-display);font-size:1.15rem;color:var(--forest);}
 .session-box .opt span{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--bark);opacity:.75;}
-.sunday-callout{
-  background:var(--oat);border:1.5px solid var(--clay);border-radius:var(--radius-md);
-  padding:1.3rem 1.4rem;margin-bottom:1.3rem;
+.sauna-option{
+  background:var(--oat);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:1.3rem 1.4rem;margin-bottom:1.1rem;
 }
-.sunday-callout h4{font-family:var(--font-display);font-size:1.05rem;color:var(--forest);margin-bottom:.4rem;}
-.sunday-callout p{font-size:.92rem;color:var(--bark);opacity:.9;margin-bottom:.6rem;}
-.sunday-callout .add-on-price{font-size:.85rem;font-weight:700;color:var(--clay-deep);}
+.sauna-option h4{font-family:var(--font-display);font-size:1.05rem;color:var(--forest);margin-bottom:.8rem;}
+.sauna-option .opt-price{display:flex;flex-wrap:wrap;gap:1.3rem;}
+.sauna-option .opt{display:flex;flex-direction:column;}
+.sauna-option .opt strong{font-family:var(--font-display);font-size:1.15rem;color:var(--forest);}
+.sauna-option .opt span{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--bark);opacity:.75;}
+.sauna-option p{font-size:.92rem;color:var(--bark);opacity:.9;margin-top:.9rem;margin-bottom:.9rem;}
+.sauna-option .time-pills{display:flex;flex-wrap:wrap;gap:.4rem;}
+.sauna-option .time-pills-label{font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--clay-deep);margin-bottom:.5rem;}
 
 /* warmth ring signature graphic, used behind the sauna feature */
 .warmth-rings{position:absolute;pointer-events:none;z-index:-1;opacity:.55;}
@@ -275,6 +280,18 @@ section{scroll-margin-top:var(--header-h);}
   transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease);
 }
 .menu-nav a.active{background:var(--mist);border-color:var(--mist);color:var(--forest);}
+.menu-nav.pinned{
+  position:fixed;left:50%;transform:translateX(-50%);
+  width:100%;max-width:1180px;padding-inline:1.25rem;
+}
+#sauna{scroll-margin-top:calc(var(--header-h) + var(--menu-nav-h) + 18px);}
+.water-note{
+  display:flex;align-items:flex-start;gap:.7rem;
+  background:rgba(143,163,127,.18);border:1px solid rgba(143,163,127,.4);
+  border-radius:var(--radius-md);padding:.9rem 1.1rem;margin-bottom:1.3rem;
+}
+.water-note .ico{flex-shrink:0;color:var(--moss);margin-top:.1rem;}
+.water-note p{font-size:.9rem;font-weight:600;color:var(--forest);margin:0;}
 
 .menu-category{margin-top:var(--space-6);scroll-margin-top:calc(var(--header-h) + var(--menu-nav-h) + 18px);}
 .menu-category:first-of-type{margin-top:0;}
@@ -416,9 +433,6 @@ section{scroll-margin-top:var(--header-h);}
 .info-card{background:rgba(250,246,236,.06);border:1px solid var(--line-light);border-radius:var(--radius-md);padding:1.6rem;}
 .info-card h3{font-size:1.15rem;color:var(--oat-light);margin-bottom:.7rem;}
 .info-card p, .info-card a{color:var(--mist);font-size:.95rem;}
-.hours-table{width:100%;font-size:.92rem;color:var(--mist);}
-.hours-table td{padding:.3rem 0;}
-.hours-table td:last-child{text-align:right;color:var(--oat-light);font-weight:600;}
 
 .book-form{background:var(--oat-light);border-radius:var(--radius-lg);padding:1.8rem;box-shadow:var(--shadow-lg);color:var(--ink);}
 .form-row{margin-bottom:1.1rem;}
@@ -460,6 +474,7 @@ section{scroll-margin-top:var(--header-h);}
   font-size:.92rem;letter-spacing:-0.01em;
 }
 .footer-social a.fb-wordmark:hover{background:#166FE0;border-color:#166FE0;}
+.version-tag{display:block;margin-top:.7rem;font-size:.75rem;opacity:.55;}
 .footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.8rem;padding-top:var(--space-3);font-size:.8rem;opacity:.65;}
 @media(min-width:860px){
   .footer-top{grid-template-columns:1.3fr .8fr .8fr .9fr;}
@@ -568,6 +583,7 @@ section{scroll-margin-top:var(--header-h);}
     <nav class="menu-nav" aria-label="Treatment categories">
       <a href="#cat-massage">Massage</a>
       <a href="#cat-facials">Facials</a>
+      <a href="#sauna">Sauna</a>
       <a href="#cat-body">For the Body</a>
       <a href="#cat-feet">For the Feet</a>
       <a href="#cat-packages">Spa Packages</a>
@@ -761,7 +777,7 @@ section{scroll-margin-top:var(--header-h);}
       </div>
     </div>
 
-    <p class="menu-footnote">All treatments by appointment only. Slippers, robes &amp; disposable underwear provided for all treatments.</p>
+    <p class="menu-footnote">All treatments by appointment only. Slippers &amp; disposable underwear provided for all treatments.</p>
   </div>
 </section>
 
@@ -819,17 +835,40 @@ section{scroll-margin-top:var(--header-h);}
             <div><h4>Finish with herbal tea</h4><p>A warm, caffeine-free herbal tea to finish, included in every session.</p></div>
           </div>
         </div>
-        <div class="session-box">
-          <div class="opt">
-            <strong>Up to 60 min</strong>
-            <span>$60 solo</span>
-            <span>$85 for two</span>
+        <div class="sauna-option">
+          <h4>Regular Sauna Session</h4>
+          <div class="opt-price">
+            <div class="opt">
+              <strong>Up to 60 min</strong>
+              <span>$60 solo</span>
+              <span>$85 for two</span>
+            </div>
           </div>
         </div>
-        <div class="sunday-callout">
+        <div class="sauna-option">
           <h4>Sunday Sauna Session</h4>
+          <div class="opt-price">
+            <div class="opt">
+              <strong>Up to 90 min</strong>
+              <span>$95 solo</span>
+              <span>$155 for two</span>
+            </div>
+          </div>
           <p>Sundays only, start with a 20-minute Back, Neck &amp; Shoulder massage before your sauna. A hot towel finish wipes away the massage oil, then it's straight into the heat, finishing with a herbal tea.</p>
-          <span class="add-on-price">+ Back, Neck &amp; Shoulder Massage add-on · 20 min · $35</span>
+          <p class="time-pills-label">Session times</p>
+          <div class="time-pills">
+            <span class="tag-pill">9am</span>
+            <span class="tag-pill">11am</span>
+            <span class="tag-pill">1pm</span>
+            <span class="tag-pill">3pm</span>
+            <span class="tag-pill">5pm</span>
+          </div>
+        </div>
+        <div class="water-note">
+          <span class="ico" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3c-4 4-7 8-7 12a7 7 0 0014 0c0-4-3-8-7-12z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          </span>
+          <p>Water &amp; towels are provided for sauna — please bring swimwear only.</p>
         </div>
         <p style="font-size:.85rem;color:var(--bark);opacity:.75;margin-bottom:1.3rem;">Prefer to pair it with another treatment? The sauna is also available as a 45-minute add-on for $55.</p>
         <a href="#book" class="btn btn-primary">Book the Sauna</a>
@@ -903,12 +942,9 @@ section{scroll-margin-top:var(--header-h);}
         </div>
         <div class="info-card book-hours reveal">
           <h3>Opening Hours</h3>
-          <table class="hours-table">
-            <tr><td>Monday – Wednesday</td><td>10am – 5pm</td></tr>
-            <tr><td>Saturday</td><td>10am – 3pm</td></tr>
-            <tr><td>Sunday (sauna only)</td><td>9am – 5pm</td></tr>
-            <tr><td>Thursday &amp; Friday</td><td>Closed</td></tr>
-          </table>
+          <p style="font-weight:700;color:var(--oat-light);margin-bottom:.7rem;">By Appointment Only</p>
+          <p style="margin-bottom:.3rem;"><strong style="color:var(--oat-light);">Open:</strong> Tuesday, Wednesday, Saturday &amp; Sunday (sauna only)</p>
+          <p><strong style="color:var(--oat-light);">Closed:</strong> Monday, Thursday &amp; Friday</p>
         </div>
       </div>
       <form class="book-form reveal" id="bookForm">
@@ -1010,6 +1046,7 @@ section{scroll-margin-top:var(--header-h);}
         <div class="footer-social">
           <a href="#" aria-label="Facebook" class="fb-wordmark">facebook</a>
         </div>
+        <span class="version-tag">build 1.4</span>
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
@@ -1030,16 +1067,15 @@ section{scroll-margin-top:var(--header-h);}
       <div class="footer-col">
         <h4>Hours</h4>
         <ul>
-          <li>Mon–Wed: 10am–5pm</li>
-          <li>Sat: 10am–3pm</li>
-          <li>Sun: 9am–5pm (sauna only)</li>
-          <li>Thu &amp; Fri: Closed</li>
+          <li>By Appointment Only</li>
+          <li>Open: Tue, Wed, Sat &amp; Sun*</li>
+          <li>Closed: Mon, Thu &amp; Fri</li>
+          <li>*Sunday: sauna only</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Breeze Day Spa, Deloraine TAS</span>
-      <span>v1.2</span>
     </div>
   </div>
 </footer>
@@ -1094,7 +1130,7 @@ document.addEventListener('DOMContentLoaded', function () {
   ];
 
   var FAQS = [
-    { q:'What should I wear?', a:'Loose, comfortable clothing to arrive and leave in is lovely — robes, towels and sandals are provided for treatments and the sauna, so there\'s nothing to think about once you\'re here.' },
+    { q:'What should I wear?', a:'Loose, comfortable clothing to arrive and leave in is lovely — towels and sandals are provided for treatments and the sauna, so there\'s nothing to think about once you\'re here.' },
     { q:'Do I need to book ahead?', a:'For treatments and the sauna, yes — a day or two\'s notice helps us set aside time just for you.' },
     { q:'What\'s your cancellation policy?', a:'We simply ask for 24 hours\' notice where possible, so we can offer the spot to someone else who needs a little calm.' },
     { q:'Do you sell gift vouchers?', a:'Yes — in person or over the phone, for any dollar amount or a specific treatment. A gentle way to share a moment of relaxation with someone.' },
@@ -1144,6 +1180,9 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- TREATMENT MENU: STICKY NAV SCROLLSPY + PILL AUTO-SCROLL ---------- */
   var menuNav = document.querySelector('.menu-nav');
   var menuCategories = Array.prototype.slice.call(document.querySelectorAll('.menu-category'));
+  var saunaSection = document.getElementById('sauna');
+  var treatmentsContainer = menuNav ? menuNav.closest('.container') : null;
+  if (saunaSection) menuCategories.push(saunaSection);
   if (menuNav && menuCategories.length) {
     var menuNavLinks = Array.prototype.slice.call(menuNav.querySelectorAll('a'));
 
@@ -1195,15 +1234,27 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
+    /* keeps the nav visible through the Sauna section too, not just the treatment menu */
+    function updateNavPin() {
+      if (!saunaSection || !treatmentsContainer) return;
+      var stickyTop = header.offsetHeight;
+      var navH = menuNav.offsetHeight;
+      var containerBottom = treatmentsContainer.getBoundingClientRect().bottom;
+      var saunaBottom = saunaSection.getBoundingClientRect().bottom;
+      var shouldPin = containerBottom <= stickyTop + navH && saunaBottom > stickyTop;
+      menuNav.classList.toggle('pinned', shouldPin);
+    }
+
     var menuTicking = false;
     function onMenuScroll() {
       if (menuTicking) return;
       menuTicking = true;
-      window.requestAnimationFrame(function () { updateActiveCategory(); menuTicking = false; });
+      window.requestAnimationFrame(function () { updateActiveCategory(); updateNavPin(); menuTicking = false; });
     }
     window.addEventListener('scroll', onMenuScroll, { passive: true });
     window.addEventListener('resize', onMenuScroll);
     updateActiveCategory();
+    updateNavPin();
   }
 
   /* ---------- SPA PACKAGE GRID ---------- */
