@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Breeze Day Spa — Deloraine, Tasmania</title>
+<script>document.documentElement.classList.add('js');</script>
+<meta name="description" content="Breeze Day Spa in Deloraine, Tasmania: relaxation and hot stone massage, facials, body treatments and infrared sauna sessions using Australian-made Waterlily products. By appointment.">
+<link rel="canonical" href="https://breezedayspa.com.au/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#223626">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Breeze Day Spa">
+<meta property="og:title" content="Breeze Day Spa — Deloraine, Tasmania">
+<meta property="og:description" content="Massage, facials and infrared sauna in Deloraine, Tasmania. By appointment.">
+<meta property="og:url" content="https://breezedayspa.com.au/">
+<meta property="og:image" content="https://breezedayspa.com.au/images/infrared-sauna.jpg">
+<meta property="og:locale" content="en_AU">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -103,8 +115,9 @@ section{scroll-margin-top:var(--header-h);}
 }
 .photo-frame.no-gradient::after{display:none;}
 
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
-.reveal.is-visible{opacity:1;transform:translateY(0);}
+/* hidden only once the script has started, so content still shows if JavaScript is blocked or fails */
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.js .reveal.is-visible{opacity:1;transform:translateY(0);}
 
 /* ============ HEADER ============ */
 .site-header{
@@ -460,6 +473,21 @@ section{scroll-margin-top:var(--header-h);}
   padding:1rem 1.1rem;border-radius:var(--radius-sm);font-weight:600;font-size:.92rem;margin-top:1rem;
 }
 .form-success.show{display:flex;}
+.form-error{
+  display:none;background:#fbebeb;color:#7a2a2a;border:1px solid #f0cfcf;
+  padding:1rem 1.1rem;border-radius:var(--radius-sm);font-weight:600;font-size:.92rem;margin-top:1rem;
+}
+.form-error.show{display:block;}
+.form-error a{text-decoration:underline;}
+.consent-row{display:flex;gap:.65rem;align-items:flex-start;margin-bottom:1.2rem;font-size:.86rem;color:var(--bark);line-height:1.45;}
+.consent-row input{flex-shrink:0;width:18px;height:18px;margin-top:.15rem;accent-color:var(--clay-deep);}
+.consent-row a{text-decoration:underline;color:var(--clay-deep);font-weight:600;}
+.hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+.testi-pause{
+  margin-left:.4rem;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--clay-deep);padding:.2rem .5rem;border-radius:100px;
+}
+.testi-dots{align-items:center;}
 @media(min-width:900px){
   .book-grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:var(--space-6);}
   .book-info{display:block;}
@@ -974,7 +1002,11 @@ section{scroll-margin-top:var(--header-h);}
           </div>
         </div>
       </div>
-      <form class="book-form reveal" id="bookForm">
+      <form class="book-form reveal" id="bookForm" method="POST" action="https://api.web3forms.com/submit">
+        <input type="hidden" name="access_key" value="099a4c51-2d21-4f90-b30b-f293dc31cfbf">
+        <input type="hidden" name="subject" value="New booking request: Breeze Day Spa website">
+        <input type="hidden" name="from_name" value="Breeze Day Spa website">
+        <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="two-col">
           <div class="form-row">
             <label for="fname">First name</label>
@@ -1020,21 +1052,14 @@ section{scroll-margin-top:var(--header-h);}
             </optgroup>
           </select>
         </div>
-        <div class="form-row">
-          <label for="duration">Session length</label>
+        <div class="form-row" id="durationRow">
+          <label for="duration">Session length (Relaxation Massage)</label>
           <select id="duration" name="duration">
-            <option value="">Not sure / fixed duration</option>
-            <option>15 min</option>
-            <option>20 min</option>
-            <option>25 min</option>
+            <option value="">Not sure yet</option>
             <option>30 min</option>
             <option>45 min</option>
             <option>60 min</option>
-            <option>65 min</option>
             <option>75 min</option>
-            <option>90 min</option>
-            <option>110 min</option>
-            <option>120 min</option>
           </select>
         </div>
         <div class="two-col">
@@ -1051,10 +1076,17 @@ section{scroll-margin-top:var(--header-h);}
           <label for="notes">Anything we should know?</label>
           <textarea id="notes" name="notes" placeholder="Health conditions, allergies, first visit, celebrating something…"></textarea>
         </div>
+        <label class="consent-row">
+          <input type="checkbox" name="consent" value="Yes" required>
+          <span>I agree to Breeze Day Spa using these details, including any health information, to arrange and safely provide my treatment. See our <a href="privacy.html">Privacy Policy</a>.</span>
+        </label>
         <button type="submit" class="btn btn-primary" style="width:100%;">Request Booking</button>
-        <div class="form-success" id="formSuccess">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="form-success" id="formSuccess" role="status">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Thank you — we'll be in touch shortly to confirm your visit.
+        </div>
+        <div class="form-error" id="formError" role="alert">
+          Sorry, your request didn't send. Please try again, or call us on <a href="tel:+61456148459">0456 148 459</a>.
         </div>
       </form>
     </div>
@@ -1071,9 +1103,9 @@ section{scroll-margin-top:var(--header-h);}
         </a>
         <p>A calm, relaxing escape in Deloraine, Tasmania — massage, facials and heat therapy using beautiful Australian-made Waterlily products.</p>
         <div class="footer-social">
-          <a href="#" aria-label="Facebook" class="fb-wordmark">facebook</a>
+          <a href="https://www.facebook.com/breezedayspatas/" aria-label="Facebook (opens in a new tab)" class="fb-wordmark" target="_blank" rel="noopener">facebook</a>
         </div>
-        <span class="version-tag">build 1.6</span>
+        <span class="version-tag">build 1.8</span>
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
@@ -1102,7 +1134,8 @@ section{scroll-margin-top:var(--header-h);}
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Breeze Day Spa, Deloraine TAS</span>
+      <span>© <span id="year">2026</span> Breeze Day Spa, Deloraine TAS</span>
+      <a href="privacy.html">Privacy Policy</a>
     </div>
   </div>
 </footer>
@@ -1157,7 +1190,7 @@ document.addEventListener('DOMContentLoaded', function () {
   ];
 
   var FAQS = [
-    { q:'What should I wear?', a:'Loose, comfortable clothing to arrive and leave in is lovely — towels and sandals are provided for treatments and the sauna, so there\'s nothing to think about once you\'re here.' },
+    { q:'What should I wear?', a:'Loose, comfortable clothing to arrive and leave in is lovely — towels and slippers are provided for treatments and the sauna, so there\'s nothing to think about once you\'re here.' },
     { q:'Do I need to book ahead?', a:'For treatments and the sauna, yes — a day or two\'s notice helps us set aside time just for you.' },
     { q:'What\'s your cancellation policy?', a:'We simply ask for 24 hours\' notice where possible, so we can offer the spot to someone else who needs a little calm.' },
     { q:'What payment methods do you accept?', a:'We accept cash, PayID and bank transfer.' },
@@ -1331,7 +1364,18 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   document.getElementById('modalClose').addEventListener('click', closeModal);
   backdrop.addEventListener('click', function (e) { if (e.target === backdrop) closeModal(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && backdrop.classList.contains('open')) closeModal(); });
+  document.addEventListener('keydown', function (e) {
+    if (!backdrop.classList.contains('open')) return;
+    if (e.key === 'Escape') { closeModal(); return; }
+    if (e.key === 'Tab') {
+      /* keep keyboard focus inside the open pop-up */
+      var focusables = backdrop.querySelectorAll('button, a[href]');
+      var first = focusables[0], last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      else if (!backdrop.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+    }
+  });
   document.getElementById('modalBook').addEventListener('click', closeModal);
 
   /* ---------- TESTIMONIAL CAROUSEL ---------- */
@@ -1355,8 +1399,30 @@ document.addEventListener('DOMContentLoaded', function () {
     slides[testiIndex].classList.add('active');
     dots[testiIndex].classList.add('active');
   }
-  function resetTimer() { clearInterval(testiTimer); testiTimer = setInterval(function () { showTesti(testiIndex + 1); }, 6000); }
+  /* auto-rotation: user can pause it; it also pauses on hover/focus and never starts for reduced-motion users */
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var userPaused = reduceMotion, hoverPaused = false;
+  var pauseBtn = document.createElement('button');
+  pauseBtn.type = 'button';
+  pauseBtn.className = 'testi-pause';
+  dotsWrap.appendChild(pauseBtn);
+  function syncPauseBtn() {
+    pauseBtn.textContent = userPaused ? 'Play' : 'Pause';
+    pauseBtn.setAttribute('aria-label', userPaused ? 'Play testimonials' : 'Pause testimonials');
+  }
+  function resetTimer() {
+    clearInterval(testiTimer);
+    if (userPaused || hoverPaused) return;
+    testiTimer = setInterval(function () { showTesti(testiIndex + 1); }, 6000);
+  }
+  pauseBtn.addEventListener('click', function () { userPaused = !userPaused; syncPauseBtn(); resetTimer(); });
+  var testiWrap = track.closest('.testi-wrap');
+  testiWrap.addEventListener('mouseenter', function () { hoverPaused = true; resetTimer(); });
+  testiWrap.addEventListener('mouseleave', function () { hoverPaused = false; resetTimer(); });
+  testiWrap.addEventListener('focusin', function () { hoverPaused = true; resetTimer(); });
+  testiWrap.addEventListener('focusout', function () { hoverPaused = false; resetTimer(); });
   Array.prototype.forEach.call(dots, function (d, i) { d.addEventListener('click', function () { showTesti(i); resetTimer(); }); });
+  syncPauseBtn();
   resetTimer();
 
   /* ---------- FAQ ACCORDION ---------- */
@@ -1386,17 +1452,74 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- BOOKING FORM ---------- */
   var form = document.getElementById('bookForm');
   var success = document.getElementById('formSuccess');
+  var errorBox = document.getElementById('formError');
   var dateInput = document.getElementById('date');
-  if (dateInput) dateInput.min = new Date().toISOString().slice(0, 10);
+  var treatSel = document.getElementById('treatment');
+  var durRow = document.getElementById('durationRow');
+  var durSel = document.getElementById('duration');
+  var submitBtn = form.querySelector('button[type="submit"]');
+
+  /* earliest date = today in the visitor's own time zone (not UTC) */
+  function localDateISO(d) { return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10); }
+  dateInput.min = localDateISO(new Date());
+
+  /* session length only applies to Relaxation Massage; every other treatment has a fixed length */
+  function syncDuration() {
+    var show = treatSel.value === 'Relaxation Massage';
+    durRow.hidden = !show;
+    if (!show) durSel.value = '';
+  }
+
+  /* open Tue, Wed, Sat, Sun; Sunday is sauna only */
+  var SUNDAY_OK = ['Infrared Sauna', 'Sunday Sauna + Massage', 'Not sure yet'];
+  function checkDay() {
+    dateInput.setCustomValidity('');
+    if (!dateInput.value) return;
+    var day = new Date(dateInput.value + 'T12:00:00').getDay();
+    if (day === 1 || day === 4 || day === 5) {
+      dateInput.setCustomValidity('We\'re closed Mondays, Thursdays and Fridays. Please choose a Tuesday, Wednesday, Saturday or Sunday.');
+    } else if (day === 0 && treatSel.value && SUNDAY_OK.indexOf(treatSel.value) === -1) {
+      dateInput.setCustomValidity('Sundays are for sauna sessions only. Please choose a Tuesday, Wednesday or Saturday for this treatment.');
+    } else if (day !== 0 && treatSel.value === 'Sunday Sauna + Massage') {
+      dateInput.setCustomValidity('The Sunday Sauna Session is only available on Sundays.');
+    }
+  }
+  treatSel.addEventListener('change', function () { syncDuration(); checkDay(); });
+  dateInput.addEventListener('change', checkDay);
+  syncDuration();
+
+  /* send to Web3Forms; only show "thank you" once the send is confirmed */
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    checkDay();
     if (!form.checkValidity()) { form.reportValidity(); return; }
-    success.classList.add('show');
-    var btn = form.querySelector('button[type="submit"]');
-    btn.textContent = 'Request Sent';
-    btn.disabled = true;
-    success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    var label = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    errorBox.classList.remove('show');
+    var payload = {};
+    new FormData(form).forEach(function (v, k) { payload[k] = v; });
+    fetch(form.action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (!res || !res.success) throw new Error((res && res.message) || 'Send failed');
+        success.classList.add('show');
+        submitBtn.textContent = 'Request Sent';
+        success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      })
+      .catch(function () {
+        errorBox.classList.add('show');
+        submitBtn.disabled = false;
+        submitBtn.textContent = label;
+      });
   });
+
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 });
 </script>
