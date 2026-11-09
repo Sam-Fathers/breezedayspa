@@ -478,6 +478,8 @@ section{scroll-margin-top:var(--header-h);}
   padding:1rem 1.1rem;border-radius:var(--radius-sm);font-weight:600;font-size:.92rem;margin-top:1rem;
 }
 .form-error.show{display:block;}
+.field-error{margin-top:.4rem;font-size:.8rem;font-weight:600;color:#9b3b3b;line-height:1.35;}
+.form-row input[aria-invalid="true"]{border-color:#c98a8a;}
 .form-error a{text-decoration:underline;}
 .consent-row{display:flex;gap:.65rem;align-items:flex-start;margin-bottom:1.2rem;font-size:.86rem;color:var(--bark);line-height:1.45;}
 .consent-row input{flex-shrink:0;width:18px;height:18px;margin-top:.15rem;accent-color:var(--clay-deep);}
@@ -1014,7 +1016,8 @@ section{scroll-margin-top:var(--header-h);}
           </div>
           <div class="form-row">
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" required>
+            <input type="tel" id="phone" name="phone" required inputmode="tel" autocomplete="tel" pattern="[0-9 +\(\)\-]{8,20}" title="Please enter a valid phone number, e.g. 0412 345 678" aria-describedby="phoneError">
+            <p class="field-error" id="phoneError" hidden>Please enter a valid phone number, e.g. 0412 345 678</p>
           </div>
         </div>
         <div class="form-row">
@@ -1105,7 +1108,7 @@ section{scroll-margin-top:var(--header-h);}
         <div class="footer-social">
           <a href="https://www.facebook.com/breezedayspatas/" aria-label="Facebook (opens in a new tab)" class="fb-wordmark" target="_blank" rel="noopener">facebook</a>
         </div>
-        <span class="version-tag">build 1.8</span>
+        <span class="version-tag">build 1.10</span>
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
@@ -1484,7 +1487,29 @@ document.addEventListener('DOMContentLoaded', function () {
       dateInput.setCustomValidity('The Sunday Sauna Session is only available on Sundays.');
     }
   }
+  /* phone: digits, spaces, + ( ) - only, with 8 to 12 digits (covers 0412 345 678, 03 6362 1234, +61 412 345 678) */
+  var phoneInput = document.getElementById('phone');
+  function checkPhone() {
+    phoneInput.setCustomValidity('');
+    var v = phoneInput.value.trim();
+    if (!v) return;
+    var digits = v.replace(/\D/g, '').length;
+    if (!/^[0-9 +()\-]+$/.test(v) || digits < 8 || digits > 12) {
+      phoneInput.setCustomValidity('Please enter a valid phone number, e.g. 0412 345 678');
+    }
+  }
+  /* inline message: shown when leaving the field with a bad number, cleared as soon as it's fixed (never pulls focus back) */
+  var phoneError = document.getElementById('phoneError');
+  function showPhoneError(show) {
+    phoneError.hidden = !show;
+    phoneInput.setAttribute('aria-invalid', show ? 'true' : 'false');
+  }
+  phoneInput.addEventListener('input', function () { checkPhone(); if (phoneInput.validity.valid) showPhoneError(false); });
+  phoneInput.addEventListener('blur', function () { checkPhone(); showPhoneError(!!phoneInput.value.trim() && !phoneInput.validity.valid); });
+
   treatSel.addEventListener('change', function () { syncDuration(); checkDay(); });
+  /* hide the previous thank-you as soon as someone starts a new request */
+  form.addEventListener('input', function () { success.classList.remove('show'); });
   dateInput.addEventListener('change', checkDay);
   syncDuration();
 
@@ -1492,6 +1517,8 @@ document.addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     checkDay();
+    checkPhone();
+    showPhoneError(!!phoneInput.value.trim() && !phoneInput.validity.valid);
     if (!form.checkValidity()) { form.reportValidity(); return; }
     var label = submitBtn.textContent;
     submitBtn.disabled = true;
@@ -1507,8 +1534,14 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(function (r) { return r.json(); })
       .then(function (res) {
         if (!res || !res.success) throw new Error((res && res.message) || 'Send failed');
+        /* clear the customer's details once the request is confirmed, keep the thank-you message */
+        form.reset();
+        syncDuration();
+        showPhoneError(false);
+        dateInput.setCustomValidity('');
+        submitBtn.disabled = false;
+        submitBtn.textContent = label;
         success.classList.add('show');
-        submitBtn.textContent = 'Request Sent';
         success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       })
       .catch(function () {
